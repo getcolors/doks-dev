@@ -1,0 +1,10 @@
+#!/usr/bin/env bb
+(require '[babashka.deps :as deps])
+(deps/add-deps
+ {:deps {'io.github.getcolors/doks
+         (if-let [root (System/getenv "DOKS_LIB_ROOT")]
+           {:local/root root}
+           {:git/url "https://github.com/getcolors/doks"
+            :git/sha "399b5f3c9aea274b4088ebbb607dac48291db81f"})}})
+(require '[colors.doks :as doks])
+(apply doks/-main *command-line-args*)
