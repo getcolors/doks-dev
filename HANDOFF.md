@@ -6,6 +6,8 @@
 - DigitalOcean cluster ID: `a87775cd-de9f-4390-8dee-281f864bc9de`
 - Region/version: `ams3`, `1.36.3-do.5`
 - Worker pool: one `s-2vcpu-4gb` worker
+- Worker: `colors-doks-dev-20260915-workers-3fig5l`, Droplet `600715804`
+- Worker public/private IP: `209.38.46.78` / `10.133.0.3`
 - State: R2 `doks-state`, key `doks-dev/cluster.tfstate`, native S3 lockfile
 - Context: `do-ams3-colors-doks-dev-20260915`
 - Private kubeconfig: `.colors/doks-dev/cluster/kubeconfig` (0600, expires after 24 hours)
@@ -19,8 +21,8 @@ lifecycles. The cluster and worker remain billable while provisioned.
 The upstream package passed three offline tests with 12 assertions. The pinned
 launcher passed credential-free build and create dry-run. A protected delete
 was rejected before provider access. Live API kubeconfig acquisition and
-Kubernetes API access succeeded. Final worker readiness is recorded in the
-parent redis-doks handoff.
+Kubernetes API access succeeded. `kubectl wait --for=condition=Ready nodes
+--all --timeout=300s` passed; the worker runs Kubernetes v1.36.3.
 
 ## Operations
 
