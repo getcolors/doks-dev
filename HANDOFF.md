@@ -1,5 +1,14 @@
 # DOKS development cluster handoff
 
+## Current status: shut down
+
+The cluster was deleted through the pinned Green workflow on 2026-09-15 after
+Redis and the controller volume were cleaned up. DigitalOcean API checks verified
+that cluster `a87775cd-de9f-4390-8dee-281f864bc9de`, worker `600715804`, and both
+cluster firewalls are absent. The `doks-state` R2 bucket remains accessible.
+The registry and its subscription were also removed by the deployment shutdown.
+The details below record the earlier live test.
+
 ## Deployment
 
 - Cluster: `colors-doks-dev-20260915`
@@ -14,7 +23,7 @@
 
 The cluster is dedicated to this task. The DOKS package owns the cluster and its
 worker pool only. Redis infrastructure and the container registry have separate
-lifecycles. The cluster and worker remain billable while provisioned.
+lifecycles. The cluster and worker were billable while provisioned; both have now been deleted.
 
 ## Verification
 
