@@ -20,7 +20,9 @@ lifecycles. The cluster and worker remain billable while provisioned.
 
 The upstream package passed three offline tests with 12 assertions. The pinned
 launcher passed credential-free build and create dry-run. A protected delete
-was rejected before provider access. Live API kubeconfig acquisition and
+was rejected before provider access. Live `./green create` completed successfully,
+followed by a passing pinned `./green check`. Remote state was saved and its lock
+released. Live API kubeconfig acquisition and
 Kubernetes API access succeeded. `kubectl wait --for=condition=Ready nodes
 --all --timeout=300s` passed; the worker runs Kubernetes v1.36.3.
 
