@@ -7,7 +7,8 @@ container registry `doks-dev` integrated with the cluster. The sibling
 deployment runs its controller here and publishes its image to that registry.
 
 This repository installs the [`doks`](https://github.com/getcolors/doks) Package
-Skill. `colors.yml` is the only file to edit.
+Skill in Green, Red and Blue. `colors.yml` is the only desired-state file to edit.
+Use `./red` or `./blue` in place of `./green` for the same verbs and state.
 
 ```sh
 direnv allow                 # once; loads devenv and the private credentials

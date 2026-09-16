@@ -1,0 +1,8 @@
+namespace/sdk-ports-smoke created
+customresourcedefinition.apiextensions.k8s.io/sdkprobes.sdk-smoke.getcolors.ai created
+customresourcedefinition.apiextensions.k8s.io/sdkprobes.sdk-smoke.getcolors.ai condition met
+customresourcedefinition.apiextensions.k8s.io "sdkprobes.sdk-smoke.getcolors.ai" deleted
+namespace "sdk-ports-smoke" deleted
+{"runtime":"red","checks":["real API create","optimistic finalizers and status","Ready","profile default","no duplicate convergence","stale status conflict","stopped generation","Retain","Destroy"],"effects":["create","stop","create","delete"]}
+{"runtime": "blue", "checks": ["real API create", "optimistic finalizers and status", "Ready", "profile default", "no duplicate convergence", "stale status conflict", "stopped generation", "Retain", "Destroy"], "effects": ["create", "stop", "create", "delete"]}
+Cleanup verified: dedicated smoke CRD and namespace removed

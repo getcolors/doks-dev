@@ -1,11 +1,23 @@
 {
   "version": 1,
   "skills": {
+    "package-doks-blue": {
+      "source": "getcolors/doks",
+      "sourceType": "github",
+      "skillPath": "skills/package-doks-blue/SKILL.md",
+      "computedHash": "40244fe9fb272082cc7e29f898dfe90addf7d028a0c55eec61e5c679c4fa4335"
+    },
     "package-doks-green": {
       "source": "getcolors/doks",
       "sourceType": "github",
       "skillPath": "skills/package-doks-green/SKILL.md",
-      "computedHash": "c330706b72cadfb635f8ed61e33117a7007bf72d70156efacd9d2c60c288cb6d"
+      "computedHash": "c78379dcf596d71f112224253a432e1acd40ae8e2d3a0f728737dd35cb9f8d1f"
+    },
+    "package-doks-red": {
+      "source": "getcolors/doks",
+      "sourceType": "github",
+      "skillPath": "skills/package-doks-red/SKILL.md",
+      "computedHash": "be9876157445d0ee7f0f7fa0cda94831f10c6f75160b8318ac65d5943a18b4cd"
     }
   }
 }

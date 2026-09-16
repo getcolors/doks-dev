@@ -1,0 +1,1 @@
+{"runtime":"red","checks":["real API create","optimistic finalizers and status","Ready","profile default","no duplicate convergence","stale status conflict","stopped generation","Retain","Destroy"],"effects":["create","stop","create","delete"]}
