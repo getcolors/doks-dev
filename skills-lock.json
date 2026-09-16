@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "package-doks-green": {
+      "source": "getcolors/doks",
+      "sourceType": "github",
+      "skillPath": "skills/package-doks-green/SKILL.md",
+      "computedHash": "bdb00ba16864f6cefe54581552af4b5f7f8b85bdea914f1578595e7634967e01"
+    }
+  }
+}

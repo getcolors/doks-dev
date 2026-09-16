@@ -1,25 +1,31 @@
-# Development DOKS cluster
+# doks-dev
 
-One ams3 worker runs the Redis operator. Redis itself runs on a separate Droplet.
-This repository pins the DOKS package; Green and provider pins live upstream.
+Desired state for one development DOKS cluster in `ams3`, one `s-2vcpu-4gb`
+worker, named `doks-dev` after the profile, plus the deployment-owned basic-tier
+container registry `doks-dev` integrated with the cluster. The sibling
+[`redis-operator-doks`](https://github.com/getcolors/redis-operator-doks)
+deployment runs its controller here and publishes its image to that registry.
 
-Load credentials privately through direnv or the workspace .envrc.private, then:
+This repository installs the [`doks`](https://github.com/getcolors/doks) Package
+Skill. `colors.yml` is the only file to edit.
 
 ```sh
-./green build
-./green create --dry-run
-./green create
-./green check
-export KUBECONFIG="$PWD/.colors/doks-dev/cluster/kubeconfig"
-kubectl get nodes
+direnv allow                 # once; loads devenv and the private credentials
+./green build                # render .colors/doks-dev/ — no provider calls
+./green create --dry-run     # walk the graph, skip every side effect
+./green create               # converge cluster, registry, integration
+./green check                # nodes Ready, node external IPs, registry integrated
+./green kubeconfig           # re-materialize .colors/doks-dev/kubeconfig (0600)
+./green registry             # one-hour push credentials under .colors/doks-dev/registry/push/
+COLORS_PAR_COMPUTE_PREVENT_DESTROY=false ./green delete
 ```
 
-`./green kubeconfig` refreshes the private, 24-hour kubeconfig. The dedicated
-`doks-state` R2 bucket stores `doks-dev/cluster.tfstate` and its lockfile. Required
-credentials are COLORS_PAR_DO_TOKEN, COLORS_PAR_DOKS_STATE_R2_ACCESS_KEY_ID, and
-COLORS_PAR_DOKS_STATE_R2_SECRET_ACCESS_KEY. Never export COLORS_PAR_PROFILE.
+Credentials live only in the gitignored `.envrc.private`: `COLORS_PAR_DO_TOKEN`
+and the `COLORS_PAR_R2_*` pair for the `doks-state` bucket, which holds
+`doks-dev/compute/managed-kubernetes.tfstate` and `doks-dev/registry.tfstate`.
+Never export `COLORS_PAR_PROFILE`.
 
-The cluster and worker are billable. Clean up Redis through its own operator
-first; cluster deletion cannot clean external resources after that operator stops.
-Then explicitly run `COLORS_PAR_COMPUTE_PREVENT_DESTROY=false ./green delete`.
-This package owns no container registry or load balancer.
+The cluster, its worker and the registry are billable. Delete the Redis operator
+deployment first; deleting the cluster cannot clean the Droplet the operator
+manages. See `HANDOFF.md` for the latest verified state and
+`history/2026-09-15/` for the previous, hand-rolled deployment.

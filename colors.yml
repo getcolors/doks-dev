@@ -1,9 +1,17 @@
+# Desired state for the doks-dev deployment: one DOKS cluster named after the
+# profile plus the deployment-owned container registry that the redis-operator
+# image is published to. Non-secret values only; credentials are
+# COLORS_PAR_DO_TOKEN and the COLORS_PAR_R2_* pair in the gitignored
+# .envrc.private. Never export COLORS_PAR_PROFILE.
 profile: doks-dev
-cluster-name: colors-doks-dev-20260915
-region: ams3
-kubernetes-version: 1.36.3-do.5
-worker-size: s-2vcpu-4gb
-worker-count: 1
-state-bucket: doks-state
-state-endpoint: https://319271fed8bc6d2d9059362be1165f37.eu.r2.cloudflarestorage.com
+workdir: .colors
+provider-compute: digitalocean
+provider-backend: r2
 compute-prevent-destroy: true
+digitalocean-region: ams3
+doks-version: 1.36.3-do.5
+digitalocean-node-size: s-2vcpu-4gb
+digitalocean-node-count: 1
+digitalocean-registry-tier: basic
+r2-bucket: doks-state
+r2-endpoint: https://319271fed8bc6d2d9059362be1165f37.eu.r2.cloudflarestorage.com
