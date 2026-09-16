@@ -28,5 +28,6 @@ Never export `COLORS_PAR_PROFILE`.
 
 The cluster, its worker and the registry are billable. Delete the Redis operator
 deployment first; deleting the cluster cannot clean the Droplet the operator
-manages. See `HANDOFF.md` for the latest verified state and
-`history/2026-09-15/` for the previous, hand-rolled deployment.
+manages. See [port verification](evidence/2026-09-16/package-verification.md)
+and the [workspace handoff](https://github.com/getcolors/workspace/blob/main/kubernetes-ports-handoff.md)
+for the current verification results.
